@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log in — OPG Vision</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="auth-page">
+
+    <!-- LEFT PANEL -->
+    <div class="auth-panel">
+      <div>
+        <a href="index.html" class="auth-panel-logo">
+          <img src="../assets/dark logo.svg" alt="OPG Vision" class="logo-img">
+          OPG Vision
+        </a>
+        <div class="auth-panel-tagline">Forensic age estimation</div>
+      </div>
+
+      <div class="auth-panel-body">
+        <h2 class="auth-panel-headline">Court-ready forensic reports in <em>three minutes.</em></h2>
+        <p class="auth-panel-desc">Trusted by forensic officers and legal teams across Malaysia. Powered by UM-patented ResNeXt-50 technology, licensed via UMCIE.</p>
+      </div>
+
+      <div class="auth-panel-creds">
+        <span>MAE<strong>&lt; 2 yrs</strong></span>
+        <span>Test set<strong>12,400 OPGs</strong></span>
+        <span>Coverage<strong>Ages 10–70</strong></span>
+        <span>Output<strong>Signed A4 PDF</strong></span>
+      </div>
+    </div>
+
+    <!-- RIGHT: FORM -->
+    <div class="auth-form-side">
+      <h1 class="auth-title">Welcome back.</h1>
+      <p class="auth-subtitle">Don't have an account? <a href="register.html">Sign up free →</a></p>
+
+      <div id="alert-error" class="alert alert-error hidden"></div>
+
+      <form id="login-form" novalidate>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Email address <span class="required">*</span></label>
+          <input class="form-input" type="email" id="email" name="email"
+                 placeholder="you@pdrm.gov.my" autocomplete="email" inputmode="email">
+          <span class="form-error" id="err-email"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Password <span class="required">*</span></label>
+          <input class="form-input" type="password" id="password" name="password"
+                 placeholder="••••••••" autocomplete="current-password">
+          <span class="form-error" id="err-password"></span>
+        </div>
+
+        <button type="submit" id="btn-login" class="btn btn-navy btn-full btn-lg" style="margin-top:20px">
+          Log in
+        </button>
+
+      </form>
+
+      <div class="auth-footer-row">
+        <a href="index.html">← Back to home</a>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="auth.js"></script>
+  <script>
+    redirectIfAuth('dashboard.html');
+
+    const form    = document.getElementById('login-form');
+    const alertEl = document.getElementById('alert-error');
+    const btnLogin = document.getElementById('btn-login');
+
+    function showError(msg) { alertEl.textContent = msg; alertEl.classList.remove('hidden'); }
+    function clearErrors() {
+      alertEl.classList.add('hidden');
+      ['email', 'password'].forEach(id => {
+        document.getElementById('err-' + id).textContent = '';
+        document.getElementById(id).classList.remove('invalid');
+      });
+    }
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      clearErrors();
+      const email    = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      let valid = true;
+      if (!email) {
+        document.getElementById('err-email').textContent = 'Email is required.';
+        document.getElementById('email').classList.add('invalid');
+        valid = false;
+      }
+      if (!password) {
+        document.getElementById('err-password').textContent = 'Password is required.';
+        document.getElementById('password').classList.add('invalid');
+        valid = false;
+      }
+      if (!valid) return;
+
+      btnLogin.disabled = true;
+      btnLogin.textContent = 'Logging in…';
+
+      const body = new FormData();
+      body.append('email', email);
+      body.append('password', password);
+
+      try {
+        const res  = await fetch(API_BASE + '/auth/login.php', { method: 'POST', body });
+        const data = await res.json();
+
+        if (!res.ok) {
+          showError(data.detail || 'Login failed. Please try again.');
+          return;
+        }
+
+        saveSession(data.access_token, data.user);
+        window.location.href = 'dashboard.html';
+
+      } catch {
+        showError('Network error. Please check your connection.');
+      } finally {
+        btnLogin.disabled = false;
+        btnLogin.textContent = 'Log in';
+      }
+    });
+  </script>
+
+</body>
+</html>

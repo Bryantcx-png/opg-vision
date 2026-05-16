@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OPG Vision — Forensic Age Estimation Platform</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="../assets/white logo.svg" alt="OPG Vision" class="logo-img">
+        OPG Vision
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">Overview</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="login.html" class="nav-link" id="nav-login">Log in</a>
+        <a href="register.html" class="nav-btn" id="nav-cta">Request access</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero on-dark">
+    <img class="hero-bg" src="hero-bg.png" alt="">
+    <div class="hero-fade" aria-hidden="true"></div>
+    <div class="hero-inner container">
+
+      <div class="hero-status">
+        <span class="live-dot"></span>
+        <span>SYSTEM ONLINE</span>
+        <span class="sep"></span>
+        <span>ResNeXt-50 v2.0.3</span>
+        <span class="sep"></span>
+        <span>UMCIE LICENSED</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="line">Court-ready</span>
+        <span class="line">forensic age reports</span>
+        <span class="line">in <em>three minutes.</em></span>
+      </h1>
+
+      <p class="hero-sub">
+        Manual OPG age estimation takes days and risks wrongful juvenile prosecution.
+        OPG Vision delivers automated, signed forensic reports for PDRM laboratories
+        and immigration agencies — verified on a Malaysian multi-ethnic dataset.
+      </p>
+
+      <div class="hero-cta">
+        <a href="register.html" class="btn btn-blue btn-lg btn-arrow">Request access </a>
+        <a href="pricing.html" class="btn btn-outline-white btn-lg">View pricing</a>
+      </div>
+
+      <!-- Live ticker -->
+      <div class="hero-ticker" aria-hidden="true">
+        <div class="label">LIVE</div>
+        <div class="track">
+          <div class="stream">
+            <span class="case">PDRM-2026-0247</span><span class="dot">→</span><span class="age">17.2 ± 1.6 yrs</span><span class="dot">·</span>
+            <span class="case">JIM-KL-2026-091</span><span class="dot">→</span><span class="age">24.6 ± 1.6 yrs</span><span class="dot">·</span>
+            <span class="case">PDRM-2026-0246</span><span class="dot">→</span><span class="age">13.8 ± 1.4 yrs</span><span class="dot">·</span>
+            <span class="case">PDRM-2026-0244</span><span class="dot">→</span><span class="age">18.4 ± 1.5 yrs</span><span class="dot">·</span>
+            <span class="case">JIM-PG-2026-022</span><span class="dot">→</span><span class="age">31.5 ± 1.7 yrs</span><span class="dot">·</span>
+            <span class="case">PDRM-2026-0242</span><span class="dot">→</span><span class="age">19.1 ± 1.6 yrs</span><span class="dot">·</span>
+            <span class="case">PDRM-2026-0241</span><span class="dot">→</span><span class="age">15.7 ± 1.6 yrs</span><span class="dot">·</span>
+            <span class="case">JIM-JB-2026-007</span><span class="dot">→</span><span class="age">22.3 ± 1.6 yrs</span><span class="dot">·</span>
+            <!-- duplicate for seamless loop -->
+            <span class="case">PDRM-2026-0247</span><span class="dot">→</span><span class="age">17.2 ± 1.6 yrs</span><span class="dot">·</span>
+            <span class="case">JIM-KL-2026-091</span><span class="dot">→</span><span class="age">24.6 ± 1.6 yrs</span><span class="dot">·</span>
+            <span class="case">PDRM-2026-0246</span><span class="dot">→</span><span class="age">13.8 ± 1.4 yrs</span><span class="dot">·</span>
+            <span class="case">PDRM-2026-0244</span><span class="dot">→</span><span class="age">18.4 ± 1.5 yrs</span><span class="dot">·</span>
+            <span class="case">JIM-PG-2026-022</span><span class="dot">→</span><span class="age">31.5 ± 1.7 yrs</span><span class="dot">·</span>
+            <span class="case">PDRM-2026-0242</span><span class="dot">→</span><span class="age">19.1 ± 1.6 yrs</span><span class="dot">·</span>
+            <span class="case">PDRM-2026-0241</span><span class="dot">→</span><span class="age">15.7 ± 1.6 yrs</span><span class="dot">·</span>
+            <span class="case">JIM-JB-2026-007</span><span class="dot">→</span><span class="age">22.3 ± 1.6 yrs</span><span class="dot">·</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="label">MAE</div>
+          <div class="value">&lt; 2<small>yrs</small></div>
+          <div class="sub">Mean absolute error</div>
+        </div>
+        <div class="hero-stat">
+          <div class="label">Cycle time</div>
+          <div class="value">3<small>min</small></div>
+          <div class="sub">Upload → signed PDF</div>
+        </div>
+        <div class="hero-stat">
+          <div class="label">Dataset</div>
+          <div class="value">10–70<small>yrs</small></div>
+          <div class="sub">Malaysian multi-ethnic</div>
+        </div>
+        <div class="hero-stat">
+          <div class="label">Output</div>
+          <div class="value">A4 PDF</div>
+          <div class="sub">Court-ready, signed</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- PROBLEM AT SCALE -->
+  <section class="section section-white">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow"><span class="num">01</span><span class="bar"></span>The problem</div>
+        <h2 class="section-title">Thousands of cases, <em>every year.</em><br>Each one requiring age verification.</h2>
+      </div>
+
+      <div class="scale-block">
+        <div class="scale-grid">
+          <div class="scale-cell">
+            <div class="scale-tag">JIM · Jan–Sep 2023</div>
+            <div class="scale-num">~93,000</div>
+            <div class="scale-label">Undocumented migrants arrested by Immigration Department.</div>
+          </div>
+          <div class="scale-cell">
+            <div class="scale-tag">In detention · 2026</div>
+            <div class="scale-num">~21,000</div>
+            <div class="scale-label">Non-citizens held in immigration detention at any given time.</div>
+          </div>
+          <div class="scale-cell">
+            <div class="scale-tag">Children · Sep 2023</div>
+            <div class="scale-num">1,382</div>
+            <div class="scale-label">Minors in immigration detention — flagged by SUHAKAM as critical.</div>
+          </div>
+          <div class="scale-cell">
+            <div class="scale-tag">Market · by 2029</div>
+            <div class="scale-num">RM 2.43<span class="unit">B</span></div>
+            <div class="scale-label">Global OPG market projection — 7.6% CAGR (Grand View Research).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FEATURES -->
+  <section class="section section-light">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow"><span class="num">02</span><span class="bar"></span>Why OPG Vision</div>
+        <h2 class="section-title">Built for forensic officers,<br>not <em>data scientists.</em></h2>
+        <p class="section-desc">No AI expertise required. Upload an OPG, fill in the case details, and download a signed forensic report — in under three minutes. Every analysis is logged, versioned, and audit-ready.</p>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-num">F.01 / Capture</div>
+          <div class="feature-title">OPG upload &amp; instant inference</div>
+          <p class="feature-desc">Drag and drop JPG, PNG, or DICOM. The ResNeXt-50 model returns a point estimate with bootstrap confidence interval in under three seconds.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-num">F.02 / Report</div>
+          <div class="feature-title">Court-ready PDF generation</div>
+          <p class="feature-desc">Every analysis emits a structured A4 report — case ID, officer, methodology, disclaimer, and result classification — ready to attach to legal proceedings.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-num">F.03 / Threshold</div>
+          <div class="feature-title">Borderline alerting at 18 yrs</div>
+          <p class="feature-desc">When the confidence range crosses the legal minority threshold, OPG Vision automatically flags the result and requires specialist sign-off.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-num">F.04 / History</div>
+          <div class="feature-title">Versioned case dashboard</div>
+          <p class="feature-desc">Every analysis is logged with model version, timestamp, and officer attribution. Filter, search, and re-download without re-uploading the image.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-num">F.05 / Privacy</div>
+          <div class="feature-title">Zero image retention</div>
+          <p class="feature-desc">OPG images are never persisted. Only report metadata is stored, tied to your organisation under JWT-authenticated access. PDPA Act 2024 compliant.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-num">F.06 / Provenance</div>
+          <div class="feature-title">UM-patented &amp; UMCIE licensed</div>
+          <p class="feature-desc">Model IP licensed from Universiti Malaya via UMCIE. Trained and validated on a Malaysian multi-ethnic OPG dataset spanning ages 10–70.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- HOW IT WORKS -->
+  <section class="section section-light" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow"><span class="num">03</span><span class="bar"></span>How it works</div>
+        <h2 class="section-title">OPG to signed report,<br><em>three steps.</em></h2>
+      </div>
+
+      <div class="steps-row">
+        <div class="step-card">
+          <div class="step-num">STEP 01 / 03</div>
+          <div class="step-title">Enter case details</div>
+          <p class="step-desc">Case ID, agency reference number, submitting officer, subject gender. Two minutes of context.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">STEP 02 / 03</div>
+          <div class="step-title">Upload the OPG</div>
+          <p class="step-desc">Drag-drop JPG, PNG, or DICOM up to 10 MB. Inference completes in under three seconds.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">STEP 03 / 03</div>
+          <div class="step-title">Download the report</div>
+          <p class="step-desc">Signed A4 PDF with age estimate, confidence range, classification, methodology, and audit trail.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CTA -->
+  <section class="cta-section on-dark">
+    <div class="container">
+      <div class="eyebrow"><span class="num">04</span><span class="bar"></span>Get started</div>
+      <h2 class="section-title" style="color:#fff;margin-top:18px">Three tiers,<br>built for your <em>institution.</em></h2>
+      <p class="section-desc" style="color:rgba(255,255,255,0.6);margin:20px auto 36px">From private dental clinics to national forensic rollouts — OPG Vision scales with your caseload and regulatory requirements. Starter from RM 999.90/month.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="pricing.html" class="btn btn-blue btn-lg btn-arrow">See all plans</a>
+        <a href="register.html" class="btn btn-outline-white btn-lg">Request access</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-row">
+        <div>
+          <div style="display:flex;align-items:center;gap:8px;font-weight:600;color:var(--ink);font-size:14px">
+            <img src="../assets/white logo.svg" alt="OPG Vision" class="logo-img" style="height:24px;width:24px">
+            OPG Vision
+          </div>
+          <p style="margin-top:6px;font-size:12px">&copy; 2026 · Powered by UM-patented ResNeXt-50, licensed via UMCIE.</p>
+        </div>
+        <div class="footer-links">
+          <a href="pricing.html">Pricing</a>
+          <a href="login.html">Log in</a>
+          <a href="register.html">Register</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="auth.js"></script>
+  <script>
+    if (isLoggedIn()) {
+      const user = getUser();
+      const loginEl = document.getElementById('nav-login');
+      loginEl.textContent = user?.name || 'My Profile';
+      loginEl.href = 'dashboard.html#settings';
+
+      document.getElementById('nav-cta').firstChild.textContent = 'Open dashboard ';
+      document.getElementById('nav-cta').href = 'dashboard.html';
+    }
+  </script>
+
+</body>
+</html>

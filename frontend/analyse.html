@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Analysis — OPG Vision</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body class="analyse-body">
+
+  <div class="analyse-shell">
+
+    <!-- TOP BAR -->
+    <div class="analyse-topbar">
+      <div class="inner">
+        <a href="index.html" class="analyse-topbar-logo">
+          <img src="../assets/white logo.svg" alt="OPG Vision" class="logo-img">
+          OPG Vision
+        </a>
+        <div class="analyse-topbar-meta">
+          <span>SESSION · <span id="session-id" style="color:var(--ink)">7C9A-2B4F</span></span>
+          <span style="color:var(--ink-4)">|</span>
+          <span>OFFICER · <span data-user-name style="color:var(--ink)">—</span></span>
+          <span style="color:var(--ink-4)">|</span>
+          <a href="dashboard.html" class="btn btn-analyse-ghost btn-sm">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 12L3 8l4-4M3 8h10"/></svg>
+            Dashboard
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CLINICAL 3-COL LAYOUT -->
+    <div class="analyse-clinical">
+
+      <!-- LEFT: vertical stepper -->
+      <aside class="step-rail" id="step-rail">
+        <div class="step-rail-label">CASE WORKFLOW</div>
+        <ul class="step-rail-items" id="step-rail-items">
+          <li class="step-rail-item active" data-step="1">
+            <span class="step-rail-dot"></span>
+            <div class="step-rail-content">
+              <div class="step-rail-name">Case details</div>
+              <div class="step-rail-time" id="step-time-1">— in progress</div>
+            </div>
+          </li>
+          <li class="step-rail-item" data-step="2">
+            <span class="step-rail-dot"></span>
+            <div class="step-rail-content">
+              <div class="step-rail-name">OPG upload</div>
+              <div class="step-rail-time" id="step-time-2">awaiting</div>
+            </div>
+          </li>
+          <li class="step-rail-item" data-step="3">
+            <span class="step-rail-dot"></span>
+            <div class="step-rail-content">
+              <div class="step-rail-name">Inference</div>
+              <div class="step-rail-time" id="step-time-3">awaiting</div>
+            </div>
+          </li>
+          <li class="step-rail-item" data-step="4">
+            <span class="step-rail-dot"></span>
+            <div class="step-rail-content">
+              <div class="step-rail-name">Signed report</div>
+              <div class="step-rail-time" id="step-time-4">awaiting</div>
+            </div>
+          </li>
+        </ul>
+      </aside>
+
+
+      <!-- CENTER: main work area -->
+      <main class="case-main">
+        <div class="case-main-inner">
+
+          <!-- ═══ SCREEN 1: Case Entry ═══════════════════════════ -->
+          <div id="screen-case-entry">
+            <header class="case-header">
+              <div class="case-header-row">
+                <div class="case-header-kicker">
+                  <span class="num" >01 / 04</span>
+                  <span class="bar"></span>
+                  Case details
+                </div>
+                <div class="case-header-id-pill">
+                  <span class="pulse"></span>
+                  DRAFT · <span id="header-time">14:32:08</span>
+                </div>
+              </div>
+              <h1 class="case-header-title">Case <em>information.</em></h1>
+              <p class="case-header-sub">Complete the metadata below — every field is signed into the audit trail and embedded in the final PDF report.</p>
+            </header>
+
+            <form id="case-form" novalidate>
+
+              <!-- Section A: Identifiers -->
+              <section class="case-section">
+                <div class="case-section-head">
+                  <div class="case-section-title"><span class="num">A.01</span>Case identifiers</div>
+                  <div class="case-section-meta">REQUIRED</div>
+                </div>
+                <div class="case-form-grid">
+                  <div>
+                    <label class="dark-label" for="case_id">Case ID <span class="required">*</span><span class="hint">PDRM-2026-NNN</span></label>
+                    <input class="dark-input" type="text" id="case_id" maxlength="20"
+                           placeholder="PDRM-2026-001" autocomplete="off">
+                    <span class="field-error" id="err-case_id"></span>
+                  </div>
+                  <div>
+                    <label class="dark-label" for="reference_no">Agency reference <span class="required">*</span><span class="hint">PDRM / JIM</span></label>
+                    <input class="dark-input" type="text" id="reference_no" maxlength="30"
+                           placeholder="KL/FOR/2026/001" autocomplete="off">
+                    <span class="field-error" id="err-reference_no"></span>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Section B: Subject -->
+              <section class="case-section">
+                <div class="case-section-head">
+                  <div class="case-section-title"><span class="num">A.02</span>Subject</div>
+                  <div class="case-section-meta">DEMOGRAPHIC</div>
+                </div>
+                <div class="case-form-grid">
+                  <div>
+                    <label class="dark-label" for="gender">Gender <span class="required">*</span></label>
+                    <select class="dark-input" id="gender">
+                      <option value="">— Select —</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="unknown">Unknown</option>
+                    </select>
+                    <span class="field-error" id="err-gender"></span>
+                  </div>
+                  <div>
+                    <label class="dark-label">Age range estimate<span class="hint">Auto</span></label>
+                    <input class="dark-input" type="text" value="Pending OPG inference" disabled>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Section C: Officer -->
+              <section class="case-section">
+                <div class="case-section-head">
+                  <div class="case-section-title"><span class="num">A.03</span>Submitting officer</div>
+                  <div class="case-section-meta">SIGNATURE</div>
+                </div>
+                <div class="case-form-grid">
+                  <div class="full">
+                    <label class="dark-label" for="officer_name">Officer name &amp; unit <span class="required">*</span></label>
+                    <input class="dark-input" type="text" id="officer_name" maxlength="50"
+                           placeholder="Insp. Ahmad Faiz, PDRM Forensic Lab KL" autocomplete="off">
+                    <span class="field-error" id="err-officer_name"></span>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Section D: Notes -->
+              <section class="case-section">
+                <div class="case-section-head">
+                  <div class="case-section-title"><span class="num">A.04</span>Notes &amp; remarks</div>
+                  <div class="case-section-meta">OPTIONAL · 300 CHAR MAX</div>
+                </div>
+                <div class="case-form-grid">
+                  <div class="full">
+                    <label class="dark-label" for="notes" style="display:none">Notes</label>
+                    <textarea class="dark-input" id="notes" maxlength="300" rows="3"
+                              placeholder="Any relevant observations or context — chain of custody, image source, prior exams, etc."></textarea>
+                    <span class="field-error" id="err-notes"></span>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Action bar -->
+              <div class="case-actions">
+                <div class="case-actions-hint" id="form-hint">
+                  <span class="req-dot"></span>
+                  4 required fields pending
+                </div>
+                <div class="case-actions-buttons">
+                  <a href="dashboard.html" class="btn btn-analyse-ghost btn-sm">Cancel</a>
+                  <button type="submit" id="btn-continue" class="btn btn-analyse-primary btn-sm btn-arrow" disabled>
+                    Continue to OPG upload
+                  </button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+
+
+          <!-- ═══ SCREEN 2: Upload ═══════════════════════════════ -->
+          <div id="screen-upload" class="hidden">
+            <header class="case-header">
+              <div class="case-header-row">
+                <div class="case-header-kicker">
+                  <span class="num" >02 / 04</span>
+                  <span class="bar"></span>
+                  OPG upload
+                </div>
+                <div class="case-header-id-pill">
+                  <span class="pulse"></span>
+                  READY FOR IMAGE
+                </div>
+              </div>
+              <h1 class="case-header-title">Upload <em>OPG image.</em></h1>
+              <p class="case-header-sub">Accepted: JPG · PNG · DICOM (.dcm) — max 10 MB. The image is processed in-memory and never persisted to disk.</p>
+            </header>
+
+            <section class="case-section">
+              <div class="case-section-head">
+                <div class="case-section-title"><span class="num">B.01</span>Image source</div>
+                <div class="case-section-meta">MAX 10 MB · JPG/PNG/DCM</div>
+              </div>
+
+              <div class="drop-zone" id="drop-zone" role="button" tabindex="0">
+                <div class="drop-zone-icon">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                    <path d="M3 14l4-4 4 4 6-6 4 4"/>
+                    <circle cx="8" cy="8" r="1.5" fill="currentColor"/>
+                  </svg>
+                </div>
+                <p class="drop-zone-text">Drag &amp; drop your OPG image here, or click to browse</p>
+                <p class="drop-zone-hint">JPG · PNG · DICOM (.dcm) · max 10 MB</p>
+              </div>
+              <input type="file" id="file-input" accept=".jpg,.jpeg,.png,.dcm,image/jpeg,image/png">
+
+              <div id="preview-container" class="file-preview hidden">
+                <img id="preview-img" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="OPG preview">
+                <div class="file-preview-info">
+                  <div class="file-preview-name" id="preview-name"></div>
+                  <div class="file-preview-size" id="preview-size"></div>
+                </div>
+                <button class="file-remove-btn" id="btn-remove-file" title="Remove">
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3l10 10M13 3L3 13"/></svg>
+                </button>
+              </div>
+
+              <p class="upload-error" id="upload-error"></p>
+            </section>
+
+            <div class="case-actions">
+              <div class="case-actions-hint">
+                <span class="req-dot"></span>
+                Awaiting image upload
+              </div>
+              <div class="case-actions-buttons">
+                <button class="btn btn-analyse-ghost btn-sm" id="btn-back-to-case">← Back</button>
+                <button class="btn btn-analyse-primary btn-sm btn-arrow" id="btn-analyse" disabled>
+                  Run age estimation
+                </button>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- ═══ SCREEN 3: Processing ════════════════════════════ -->
+          <div id="screen-processing" class="hidden">
+            <header class="case-header">
+              <div class="case-header-row">
+                <div class="case-header-kicker">
+                  <span class="num" >03 / 04</span>
+                  <span class="bar"></span>
+                  Inference
+                </div>
+                <div class="case-header-id-pill">
+                  <span class="pulse" style="background:#4ade80"></span>
+                  PROCESSING
+                </div>
+              </div>
+              <h1 class="case-header-title">Running <em>inference.</em></h1>
+              <p class="case-header-sub">ResNeXt-50 forward pass and bootstrap confidence interval calculation. Typical end-to-end time: 2.7 seconds.</p>
+            </header>
+
+            <div class="processing-card">
+              <div class="processing-head">
+                <div class="dots"><i></i><i></i><i></i></div>
+                <span style="margin-left:8px">opg-vision · resnext-50 · inference</span>
+              </div>
+              <div class="processing-body">
+                <div class="processing-title">
+                  <div class="spinner"></div>
+                  Analysing <em>OPG.</em>
+                </div>
+                <p id="status-message">Preprocessing OPG image…</p>
+                <div class="processing-log" id="processing-log"></div>
+                <div class="processing-cancel">
+                  <button class="btn btn-analyse-danger btn-sm" id="btn-cancel">Cancel inference</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- ═══ SCREEN 4: Results ═══════════════════════════════ -->
+          <div id="screen-results" class="hidden">
+            <header class="case-header">
+              <div class="case-header-row">
+                <div class="case-header-kicker">
+                  <span class="num" >04 / 04</span>
+                  <span class="bar"></span>
+                  Results
+                </div>
+                <div class="case-header-id-pill">
+                  <span class="pulse" style="background:#4ade80;animation:none"></span>
+                  COMPLETE
+                </div>
+              </div>
+              <h1 class="case-header-title">Analysis <em>complete.</em></h1>
+              <p class="case-header-sub">Signed forensic report below. Download as PDF or start a new case.</p>
+            </header>
+
+            <!-- Summary panel -->
+            <div class="results-summary">
+              <div class="results-meta-top">
+                <span>Report<strong id="sum-report-id">—</strong></span>
+                <span>Case<strong id="sum-case-id">—</strong></span>
+                <span>Generated<strong id="sum-timestamp">—</strong></span>
+                <span>Processing<strong id="sum-proc-time">—</strong></span>
+              </div>
+
+              <div class="results-age-row">
+                <div class="results-age-value" id="sum-age">—</div>
+                <div class="results-age-unit">years estimated</div>
+                <img id="sum-thumb" class="results-thumb" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="OPG">
+              </div>
+
+              <div class="results-range" id="sum-range">—</div>
+
+              <div class="age-viz">
+                <div class="age-viz-track">
+                  <div class="age-viz-range" id="age-viz-range" style="left:30%;width:20%"></div>
+                  <div class="age-viz-threshold" id="age-viz-threshold" style="left:37%"></div>
+                  <div class="age-viz-marker" id="age-viz-marker" style="left:40%"></div>
+                </div>
+                <div class="age-viz-scale">
+                  <span>5</span><span>10</span><span>15</span>
+                  <span style="color:var(--blue-light)">18 ← threshold</span>
+                  <span>25</span><span>30</span><span>35</span><span>40</span>
+                </div>
+              </div>
+
+              <div style="display:flex;align-items:center;gap:14px;margin-top:14px;flex-wrap:wrap">
+                <span class="result-badge" id="sum-badge">—</span>
+                <span style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;color:rgba(255,255,255,0.55)" id="sum-confidence"></span>
+              </div>
+            </div>
+
+            <!-- Borderline warning -->
+            <div class="warning-box hidden" id="borderline-warning">
+              <div class="warning-box-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 22h20L12 2z"/><path d="M12 9v6M12 18.5v.1"/></svg>
+                BORDERLINE RESULT — SPECIALIST REVIEW REQUIRED
+              </div>
+              <div class="warning-box-text" id="borderline-warning-text"></div>
+            </div>
+
+            <!-- Full printable report -->
+            <div id="full-report">
+
+              <div class="report-header">
+                <div>
+                  <div class="report-logo-name">OPG Vision</div>
+                  <div class="report-logo-sub">Forensic Age Estimation Report</div>
+                </div>
+                <div class="report-id-block">
+                  <strong id="rpt-report-id">—</strong>
+                  REPORT ID
+                </div>
+              </div>
+
+              <div class="report-section">
+                <div class="report-section-title">Case Information</div>
+                <div class="report-grid">
+                  <div><span class="report-field-label">Case ID</span><span class="report-field-value" id="rpt-case-id">—</span></div>
+                  <div><span class="report-field-label">Reference No.</span><span class="report-field-value" id="rpt-reference-no">—</span></div>
+                  <div><span class="report-field-label">Submitting Officer</span><span class="report-field-value" id="rpt-officer">—</span></div>
+                  <div><span class="report-field-label">Subject Gender</span><span class="report-field-value" id="rpt-gender">—</span></div>
+                  <div style="grid-column:1/-1"><span class="report-field-label">Notes / Remarks</span><span class="report-field-value" id="rpt-notes">—</span></div>
+                </div>
+              </div>
+
+              <div class="report-section">
+                <div class="report-section-title">Image Reference</div>
+                <div class="report-thumb-row">
+                  <img id="rpt-thumb" class="report-thumb" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="OPG">
+                  <div class="report-grid" style="flex:1">
+                    <div><span class="report-field-label">Filename</span><span class="report-field-value" id="rpt-filename">—</span></div>
+                    <div><span class="report-field-label">File Size</span><span class="report-field-value" id="rpt-filesize">—</span></div>
+                    <div style="grid-column:1/-1"><span class="report-field-label">Analysis Timestamp</span><span class="report-field-value" id="rpt-timestamp">—</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="report-section">
+                <div class="report-section-title">Age Estimation Result</div>
+                <div class="report-age-value" id="rpt-age">—</div>
+                <div class="report-age-range" id="rpt-age-range">—</div>
+                <div style="margin-top:8px"><span class="report-badge" id="rpt-badge">—</span></div>
+                <div class="report-grid" style="margin-top:14px">
+                  <div><span class="report-field-label">Confidence Level</span><span class="report-field-value" id="rpt-confidence">—</span></div>
+                  <div><span class="report-field-label">Model Version</span><span class="report-field-value" id="rpt-model">—</span></div>
+                </div>
+                <div class="report-warning hidden" id="rpt-warning">
+                  <div class="report-warning-title">⚠ BORDERLINE RESULT — SPECIALIST REVIEW REQUIRED</div>
+                  <div id="rpt-warning-text"></div>
+                </div>
+              </div>
+
+              <div class="report-section">
+                <div class="report-section-title">Methodology</div>
+                <p class="report-methodology">
+                  Age estimation performed using a ResNeXt-50 Convolutional Neural Network fine-tuned on a
+                  Malaysian multi-ethnic OPG dataset (Malay, Chinese, Indian; age range 10–70 years). Model
+                  validated to a mean absolute error (MAE) below 2 years on a held-out test set of 12,400 OPGs.
+                  Intellectual property licensed from Universiti Malaya via UMCIE.
+                </p>
+              </div>
+
+              <div class="report-section">
+                <div class="report-section-title">Disclaimer</div>
+                <p class="report-disclaimer">
+                  This report was generated by OPG Vision. Results are intended as a decision-support
+                  tool only and do not replace specialist clinical judgment. Do not use as sole evidence in
+                  legal proceedings without review by a qualified forensic odontologist.
+                </p>
+              </div>
+
+              <div class="report-footer">
+                <span>Powered by UM-patented ResNeXt-50, licensed via UMCIE</span>
+                <span id="rpt-footer-timestamp">—</span>
+              </div>
+
+            </div>
+
+            <div class="case-actions" style="margin-top:18px">
+              <div class="case-actions-hint ok">
+                <span class="req-dot"></span>
+                Report signed &amp; persisted to dashboard
+              </div>
+              <div class="case-actions-buttons">
+                <button class="btn btn-analyse-ghost btn-sm" id="btn-new-case">+ New case</button>
+                <button class="btn btn-analyse-primary btn-sm" id="btn-download-pdf">
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v9M8 11l3-3M8 11l-3-3M3 13h10"/></svg>
+                  Download signed PDF
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+
+
+      <!-- RIGHT: case meta rail -->
+      <aside class="case-meta">
+
+        <div class="case-meta-section">
+          <div class="case-meta-label">
+            Case status
+            <span class="status-pill" id="case-status-pill">DRAFT</span>
+          </div>
+          <div class="case-meta-card">
+            <div class="case-meta-row">
+              <span class="k">Opened</span>
+              <span class="v" id="meta-opened">14:32:08</span>
+            </div>
+            <div class="case-meta-row">
+              <span class="k">Officer</span>
+              <span class="v" id="meta-officer" data-user-initials>AF</span>
+            </div>
+            <div class="case-meta-row">
+              <span class="k">Session</span>
+              <span class="v">7C9A-2B4F</span>
+            </div>
+            <div class="case-meta-row">
+              <span class="k">Model</span>
+              <span class="v">v2.0.3</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-meta-section">
+          <div class="case-meta-label">Subject preview</div>
+          <div class="case-meta-card">
+            <div class="case-meta-row">
+              <span class="k">Case ID</span>
+              <span class="v dim" id="meta-case-id">— pending</span>
+            </div>
+            <div class="case-meta-row">
+              <span class="k">Reference</span>
+              <span class="v dim" id="meta-reference">— pending</span>
+            </div>
+            <div class="case-meta-row">
+              <span class="k">Gender</span>
+              <span class="v dim" id="meta-gender">— pending</span>
+            </div>
+            <div class="case-meta-row">
+              <span class="k">Image</span>
+              <span class="v dim" id="meta-image">— pending</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-meta-section">
+          <div class="case-meta-label">Audit log</div>
+          <div class="audit-feed" id="audit-feed">
+            <div class="audit-event"><span class="t" id="audit-init-t">14:32:08</span><span><span class="blue">●</span> Session start · officer authenticated</span></div>
+            <div class="audit-event-empty" id="audit-empty">— Awaiting field entry —</div>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+  </div>
+
+  <script src="auth.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>

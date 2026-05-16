@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing — OPG Vision</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="../assets/white logo.svg" alt="OPG Vision" class="logo-img">
+        OPG Vision
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Overview</a>
+        <a href="pricing.html" class="nav-link active">Pricing</a>
+        <a href="login.html" class="nav-link" id="nav-login">Log in</a>
+        <a href="register.html" class="nav-btn" id="nav-cta">Request access</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <section class="section section-white" style="padding-bottom:32px">
+    <div class="container">
+      <div id="upgrade-banner" class="hidden" style="background:rgba(24,0,173,0.07);border:1px solid rgba(24,0,173,0.18);border-radius:10px;padding:14px 20px;margin-bottom:28px;display:flex;align-items:center;gap:12px">
+        <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="#1800ad" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.5L10 10"/></svg>
+        <span style="font-size:13.5px;color:#1800ad">Select a plan below to activate your OPG Vision account and start analysing.</span>
+      </div>
+      <div class="section-head center">
+        <div class="eyebrow" style="justify-content:center"><span class="num">01</span><span class="bar"></span>Pricing</div>
+        <h1 class="section-title">Simple, transparent <em>pricing.</em></h1>
+        <p class="section-desc">Three tiers for every deployment scale — from individual practitioners to national forensic rollouts.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING CARDS -->
+  <section class="section section-white" style="padding-top:0">
+    <div class="container">
+      <div class="pricing-grid">
+
+        <!-- STARTER -->
+        <div class="pricing-card">
+          <div class="pricing-plan-name">Starter</div>
+          <div class="pricing-price"><span class="pricing-price-amount">RM&nbsp;999<span class="pricing-price-decimal">.90</span></span><span class="pricing-price-unit">/ month</span></div>
+          <div class="pricing-period">100 OPG reads · RM 10/read overage</div>
+          <p class="pricing-desc">For private dental clinics (1–3 branches), small district hospital pathology units, and individual forensic practitioners.</p>
+          <hr class="pricing-divider">
+          <ul class="pricing-features">
+            <li class="pricing-feature"><span class="pricing-feature-check">✓</span> 100 OPG reads / month</li>
+            <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Court-ready PDF reports</li>
+            <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Borderline alerting</li>
+            <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Standard API access</li>
+            <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Email support</li>
+            <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Cloud-hosted access</li>
+            <li class="pricing-feature muted"><span class="pricing-feature-x">✕</span> On-premises deployment</li>
+            <li class="pricing-feature muted"><span class="pricing-feature-x">✕</span> DICOM / HL7 integration</li>
+          </ul>
+          <button class="btn btn-outline btn-full btn-lg plan-select-btn" data-plan="starter">Get started</button>
+        </div>
+
+        <!-- PROFESSIONAL (featured) -->
+        <div class="pricing-card featured">
+          <div class="pricing-popular-badge">GOVERNMENT RECOMMENDED</div>
+          <div class="pricing-plan-name">Professional</div>
+          <div class="pricing-price"><span class="pricing-price-amount">RM&nbsp;2,499<span class="pricing-price-decimal">.90</span></span><span class="pricing-price-unit">/ month</span></div>
+          <div class="pricing-period">Unlimited reads · on-prem or cloud</div>
+          <p class="pricing-desc">For PDRM Forensic Division, JIM regional offices, MOH district hospitals, and dental chains (4+ branches).</p>
+          <hr class="pricing-divider">
+          <ul class="pricing-features">
+            <li class="pricing-feature"><span class="pricing-feature-check">✓</span> <strong>Unlimited</strong> OPG reads</li>
+            <li class="pricing-feature"><span class="pricing-feature-check">✓</span> On-prem or cloud deployment</li>
+            <li class="pricing-feature"><span class="pricing-feature-check">✓</span> DICOM / HL7 integration</li>
+            <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Priority SLA (4 hr response)</li>
+            <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Quarterly performance reports</li>
+            <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Multi-user access (≤ 20)</li>
+            <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Court-ready PDF reports</li>
+            <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Borderline alerting</li>
+          </ul>
+          <button class="btn btn-navy btn-full btn-lg plan-select-btn" data-plan="professional">Request access</button>
+        </div>
+
+        <!-- ENTERPRISE -->
+        <div class="pricing-card">
+          <div class="pricing-plan-name">Enterprise</div>
+          <div class="pricing-price"><span class="pricing-price-amount">RM&nbsp;119,999<span class="pricing-price-decimal">.90</span></span><span class="pricing-price-unit">/ year</span></div>
+          <div class="pricing-period">Multi-site · white-label · custom tune</div>
+          <p class="pricing-desc">For MOH national contracts, PDRM national deployment, ASEAN forensic agencies, and large hospital groups (KPJ, Sunway Medical).</p>
+          <hr class="pricing-divider">
+          <ul class="pricing-features">
+            <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Everything in Professional</li>
+            <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Multi-site under one contract</li>
+            <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Custom model fine-tuning</li>
+            <li class="pricing-feature"><span class="pricing-feature-check">✓</span> White-label PDF reports</li>
+            <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Dedicated account manager</li>
+            <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Uptime SLA guarantee</li>
+            <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Quarterly in-person review</li>
+            <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Unlimited API rate</li>
+          </ul>
+          <a href="mailto:hello@opgvision.ai" class="btn btn-outline btn-full btn-lg">Contact sales</a>
+        </div>
+
+      </div>
+
+      <!-- Compare strip — solid card blocks -->
+      <div style="margin-top:64px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+        <div style="padding:22px 24px;background:var(--bg-section);border-radius:var(--r-3)">
+          <div style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px">Mean abs. error</div>
+          <div style="font-family:var(--font-serif);font-size:36px;letter-spacing:-0.025em;line-height:1">&lt; 2.0<span style="font-family:var(--font-sans);font-size:14px;color:var(--ink-3);margin-left:4px">yrs</span></div>
+        </div>
+        <div style="padding:22px 24px;background:var(--bg-section);border-radius:var(--r-3)">
+          <div style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px">Avg. inference</div>
+          <div style="font-family:var(--font-serif);font-size:36px;letter-spacing:-0.025em;line-height:1">2.7<span style="font-family:var(--font-sans);font-size:14px;color:var(--ink-3);margin-left:4px">sec</span></div>
+        </div>
+        <div style="padding:22px 24px;background:var(--bg-section);border-radius:var(--r-3)">
+          <div style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px">Test set</div>
+          <div style="font-family:var(--font-serif);font-size:36px;letter-spacing:-0.025em;line-height:1">12,400<span style="font-family:var(--font-sans);font-size:14px;color:var(--ink-3);margin-left:4px">OPGs</span></div>
+        </div>
+        <div style="padding:22px 24px;background:var(--bg-section);border-radius:var(--r-3)">
+          <div style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px">PDPA 2024</div>
+          <div style="font-family:var(--font-serif);font-size:36px;letter-spacing:-0.025em;line-height:1">Compliant</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FAQ -->
+  <section class="section section-light">
+    <div class="container-narrow">
+      <div class="section-head center">
+        <div class="eyebrow" style="justify-content:center"><span class="num">02</span><span class="bar"></span>FAQ</div>
+        <h2 class="section-title">Common <em>questions.</em></h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">How accurate is the age estimate?</div>
+          <p class="faq-a">The underlying ResNeXt-50 model achieves a mean absolute error below 2 years on a held-out Malaysian multi-ethnic test set (n = 12,400). Every report shows the point estimate alongside its bootstrap-derived 95% confidence interval.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Are the reports admissible in court?</div>
+          <p class="faq-a">OPG Vision reports are decision-support documents and should be reviewed by a qualified forensic odontologist before use in legal proceedings. Every report includes a full methodology section and disclaimer; borderline results always require specialist sign-off before release.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is OPG image data stored after analysis?</div>
+          <p class="faq-a">No image data is retained after inference. Only report metadata (case ID, estimated age, classification, model version) is persisted to your dashboard. OPG datasets are classified as biometric sensitive information under PDPA Amendment Act 2024 — Professional and Enterprise clients on on-premises deployment retain full data residency control.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What file formats are supported?</div>
+          <p class="faq-a">JPG, PNG, and DICOM (.dcm) files up to 10 MB. Full DICOM metadata parsing — including SOP Instance UID extraction — is on the Pro roadmap.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is on-premises deployment available?</div>
+          <p class="faq-a">Yes — Professional and Enterprise clients can elect on-premises deployment to meet MOH data sovereignty requirements and PDPA Amendment Act 2024 compliance. OPG datasets remain entirely within your institution's network at all times.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="eyebrow" style="justify-content:center;color:rgba(255,255,255,0.55)"><span class="num" style="color:var(--cyan)">03</span><span class="bar"></span>Get started</div>
+      <h2 class="section-title" style="color:#fff;margin-top:18px">Ready to <em>start?</em></h2>
+      <p class="section-desc" style="color:rgba(255,255,255,0.6);margin:20px auto 36px">Request access for your forensic unit, or contact our team to discuss a pilot engagement.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="register.html" class="btn btn-blue btn-lg btn-arrow">Request access</a>
+        <a href="mailto:hello@opgvision.ai" class="btn btn-outline-white btn-lg">Contact sales</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-row">
+        <div>
+          <div style="display:flex;align-items:center;gap:8px;font-weight:600;color:var(--ink);font-size:14px">
+            <img src="../assets/white logo.svg" alt="OPG Vision" class="logo-img" style="height:24px;width:24px">
+            OPG Vision
+          </div>
+          <p style="margin-top:6px;font-size:12px">&copy; 2026 · Powered by UM-patented ResNeXt-50, licensed via UMCIE.</p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="login.html">Log in</a>
+          <a href="register.html">Register</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="auth.js"></script>
+  <script>
+    const loggedIn = isLoggedIn();
+
+    if (loggedIn) {
+      document.getElementById('nav-login').textContent = 'Dashboard';
+      document.getElementById('nav-login').href = 'dashboard.html';
+      document.getElementById('nav-cta').firstChild.textContent = 'Open dashboard ';
+      document.getElementById('nav-cta').href = 'dashboard.html';
+    }
+
+    // Show upgrade banner if redirected from dashboard/analyse
+    if (new URLSearchParams(window.location.search).get('upgrade') === '1') {
+      document.getElementById('upgrade-banner').classList.remove('hidden');
+      document.getElementById('upgrade-banner').style.display = 'flex';
+    }
+
+    // Plan selection buttons
+    document.querySelectorAll('.plan-select-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const plan = btn.dataset.plan;
+        if (!loggedIn) {
+          window.location.href = 'register.html';
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Activating…';
+
+        try {
+          const body = new FormData();
+          body.append('plan', plan);
+          const res  = await fetch(API_BASE + '/auth/select-plan.php', {
+            method: 'POST',
+            headers: authHeaders(),
+            body,
+          });
+          const data = await res.json();
+          if (!res.ok) { alert(data.detail || 'Failed to select plan.'); return; }
+
+          // Update stored user so the gate passes immediately
+          const user = getUser();
+          if (user) {
+            user.plan = data.plan;
+            localStorage.setItem('opg_user', JSON.stringify(user));
+          }
+          window.location.href = 'dashboard.html';
+        } catch {
+          alert('Network error. Please try again.');
+        } finally {
+          btn.disabled = false;
+          btn.textContent = plan === 'starter' ? 'Get started' : 'Request access';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — OPG Vision</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="dashboard-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <a href="index.html" class="sidebar-logo">
+        <img src="../assets/dark logo.svg" alt="OPG Vision" class="logo-img">
+        <span>
+          OPG Vision
+          <small>Forensic Platform</small>
+        </span>
+      </a>
+
+      <a href="#" class="sidebar-link active" data-section="dashboard">
+        <span class="sidebar-link-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>
+        </span>
+        Dashboard
+      </a>
+      <a href="analyse.html" class="sidebar-link">
+        <span class="sidebar-link-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1v6m0 0v6m0-6h6m-6 0H2"/></svg>
+        </span>
+        New analysis
+      </a>
+      <a href="#" class="sidebar-link" data-section="cases">
+        <span class="sidebar-link-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2h7l3 3v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M10 2v3h3"/></svg>
+        </span>
+        Cases
+        <span id="cases-badge" style="margin-left:auto;font-family:var(--font-mono);font-size:10.5px;color:rgba(255,255,255,0.35);letter-spacing:0.06em">—</span>
+      </a>
+      <a href="#" class="sidebar-link" data-section="audit">
+        <span class="sidebar-link-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 4v4l2.5 2.5"/></svg>
+        </span>
+        Audit log
+      </a>
+
+      <div class="sidebar-section-label">Account</div>
+      <a href="pricing.html" class="sidebar-link">
+        <span class="sidebar-link-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1.5" y="3.5" width="13" height="9" rx="1.5"/><path d="M1.5 6h13"/></svg>
+        </span>
+        Plans &amp; billing
+      </a>
+      <a href="#" class="sidebar-link" data-section="team">
+        <span class="sidebar-link-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="5.5" r="2.5"/><path d="M2.5 13c.6-2.6 2.8-4 5.5-4s4.9 1.4 5.5 4"/></svg>
+        </span>
+        Team
+      </a>
+      <a href="#" class="sidebar-link" data-section="settings">
+        <span class="sidebar-link-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="2"/><path d="M13.7 9.5a1 1 0 0 0 .2-1.1l-.7-1.2a1 1 0 0 0-1-.5l-1 .1a4.5 4.5 0 0 0-.7-.4l-.4-1a1 1 0 0 0-.9-.6h-1.4a1 1 0 0 0-.9.6l-.4 1a4.5 4.5 0 0 0-.7.4l-1-.1a1 1 0 0 0-1 .5l-.7 1.2a1 1 0 0 0 .2 1.1l.8.7v.8l-.8.7a1 1 0 0 0-.2 1.1l.7 1.2c.2.3.6.5 1 .5l1-.1c.2.2.5.3.7.4l.4 1c.1.4.5.6.9.6h1.4c.4 0 .8-.2.9-.6l.4-1 .7-.4 1 .1c.4 0 .8-.2 1-.5l.7-1.2a1 1 0 0 0-.2-1.1l-.8-.7v-.8z"/></svg>
+        </span>
+        Settings
+      </a>
+
+      <div class="sidebar-spacer"></div>
+
+      <div class="sidebar-user">
+        <div class="sidebar-user-card">
+          <div class="sidebar-user-avatar" data-user-initials>AF</div>
+          <div class="sidebar-user-info">
+            <div class="sidebar-user-name" data-user-name>—</div>
+            <div class="sidebar-user-email" data-user-email>—</div>
+          </div>
+        </div>
+        <button class="sidebar-link" id="btn-logout" style="color:rgba(251,113,133,0.85);margin-top:4px">
+          <span class="sidebar-link-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h5"/><path d="M11 5l3 3-3 3M14 8H7"/></svg>
+          </span>
+          Log out
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="dashboard-main">
+
+      <!-- Dynamic header -->
+      <div class="dashboard-header">
+        <div>
+          <h1 class="dashboard-title" id="page-title">Dashboard</h1>
+          <p class="dashboard-subtitle" id="page-subtitle">
+            <span class="live-dot"></span>
+            <span data-user-name>—</span> · Last sync 4 sec ago · <span style="color:var(--cyan)">All systems operational</span>
+          </p>
+        </div>
+        <div id="header-actions" style="display:flex;gap:8px">
+          <button id="btn-export-csv" class="btn btn-outline btn-sm">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v12M8 14l3-3M8 14l-3-3"/></svg>
+            Export CSV
+          </button>
+          <a href="analyse.html" class="btn btn-navy btn-sm">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v10M3 8h10"/></svg>
+            New analysis
+          </a>
+        </div>
+      </div>
+
+      <!-- ══ SECTION: DASHBOARD ══════════════════════════════ -->
+      <div id="section-dashboard" class="dash-section">
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Total analyses</div>
+            <div class="stat-value" id="stat-total">—</div>
+            <div class="stat-sub" id="stat-total-sub"><span class="pos" id="stat-total-trend">—</span> · 12-week trend</div>
+            <svg id="spark-total" class="stat-spark" viewBox="0 0 88 32" preserveAspectRatio="none">
+              <polyline id="spark-total-line" fill="none" stroke="#0a5bff" stroke-width="1.5" points="0,16 88,16"/>
+              <circle id="spark-total-dot" cx="88" cy="16" r="2.5" fill="#0a5bff"/>
+            </svg>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">This month</div>
+            <div class="stat-value" id="stat-month">—</div>
+            <div class="stat-sub" id="stat-month-sub">analyses this month</div>
+            <svg id="spark-month" class="stat-spark" viewBox="0 0 88 32" preserveAspectRatio="none">
+              <polyline id="spark-month-line" fill="none" stroke="#0a5bff" stroke-width="1.5" points="0,16 88,16"/>
+              <circle id="spark-month-dot" cx="88" cy="16" r="2.5" fill="#0a5bff"/>
+            </svg>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Borderline cases</div>
+            <div class="stat-value" id="stat-borderline">—</div>
+            <div class="stat-sub" style="color:var(--amber)">⚠ Specialist review required</div>
+            <svg id="spark-borderline" class="stat-spark" viewBox="0 0 88 32" preserveAspectRatio="none">
+              <polyline id="spark-borderline-line" fill="none" stroke="#d97706" stroke-width="1.5" points="0,16 88,16"/>
+              <circle id="spark-borderline-dot" cx="88" cy="16" r="2.5" fill="#d97706"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Recent cases (last 5) -->
+        <div class="table-card">
+          <div class="table-card-header">
+            <div class="table-card-title">Recent cases</div>
+            <button class="btn btn-outline btn-sm" onclick="switchSection('cases')" style="font-size:12px">View all →</button>
+          </div>
+          <div id="dash-cases-loading" style="padding:48px;text-align:center;color:var(--ink-3);font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em">LOADING<span class="dot-pulse">...</span></div>
+          <div id="dash-cases-empty" class="empty-state hidden">
+            <div class="empty-state-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7v13a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V7M3 7h18M3 7l2-4h14l2 4"/></svg>
+            </div>
+            <p class="empty-state-text">No analyses yet. <a href="analyse.html" style="color:var(--blue)">Run your first one →</a></p>
+          </div>
+          <table class="data-table hidden" id="dash-cases-table">
+            <thead>
+              <tr><th>Report ID</th><th>Case ID</th><th>Date</th><th>Est. age</th><th>Result</th><th>Officer</th><th></th></tr>
+            </thead>
+            <tbody id="dash-cases-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══ SECTION: CASES ═════════════════════════════════ -->
+      <div id="section-cases" class="dash-section hidden">
+        <div class="table-card">
+          <div class="table-card-header">
+            <div class="table-card-title">All cases</div>
+            <div style="display:flex;align-items:center;gap:10px">
+              <input id="cases-search" type="text" class="form-input" placeholder="Search report ID, case ID, officer…"
+                style="width:260px;padding:7px 12px;font-size:13px;height:auto">
+              <span class="table-card-meta" id="cases-count-full">—</span>
+            </div>
+          </div>
+          <div id="cases-loading-full" style="padding:48px;text-align:center;color:var(--ink-3);font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em">LOADING<span class="dot-pulse">...</span></div>
+          <div id="cases-empty-full" class="empty-state hidden">
+            <div class="empty-state-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7v13a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V7M3 7h18M3 7l2-4h14l2 4"/></svg>
+            </div>
+            <p class="empty-state-text">No cases match your search.</p>
+          </div>
+          <table class="data-table hidden" id="cases-table-full">
+            <thead>
+              <tr><th>Report ID</th><th>Case ID</th><th>Reference</th><th>Date</th><th>Est. age</th><th>Result</th><th>Officer</th><th></th></tr>
+            </thead>
+            <tbody id="cases-tbody-full"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══ SECTION: AUDIT LOG ═════════════════════════════ -->
+      <div id="section-audit" class="dash-section hidden">
+        <div class="table-card">
+          <div class="table-card-header">
+            <div class="table-card-title">Audit log</div>
+            <span class="table-card-meta" id="audit-count">—</span>
+          </div>
+          <div id="audit-loading" style="padding:48px;text-align:center;color:var(--ink-3);font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em">LOADING<span class="dot-pulse">...</span></div>
+          <div id="audit-empty" class="empty-state hidden">
+            <p class="empty-state-text">No events recorded yet.</p>
+          </div>
+          <div id="audit-timeline" class="hidden" style="padding:8px 0">
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ SECTION: TEAM ══════════════════════════════════ -->
+      <div id="section-team" class="dash-section hidden">
+        <div class="table-card" style="max-width:680px">
+          <div class="table-card-header">
+            <div class="table-card-title">Team members</div>
+            <span class="table-card-meta">1 MEMBER</span>
+          </div>
+          <div style="padding:20px 24px">
+            <div style="display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)">
+              <div class="sidebar-user-avatar" data-user-initials style="width:40px;height:40px;font-size:15px;flex-shrink:0">—</div>
+              <div style="flex:1">
+                <div style="font-weight:600;font-size:14px;color:var(--ink)" data-user-name>—</div>
+                <div style="font-size:12.5px;color:var(--ink-3);margin-top:2px" data-user-email>—</div>
+              </div>
+              <span style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.1em;color:var(--blue);background:rgba(24,0,173,0.08);border:1px solid rgba(24,0,173,0.18);border-radius:6px;padding:3px 8px">ADMIN</span>
+            </div>
+            <div style="margin-top:20px">
+              <p style="font-size:13px;color:var(--ink-3);margin-bottom:14px;font-family:var(--font-mono);letter-spacing:0.04em">INVITE A TEAM MEMBER</p>
+              <div style="display:flex;gap:8px">
+                <input type="email" class="form-input" placeholder="colleague@pdrm.gov.my" style="flex:1;padding:9px 12px;font-size:13.5px;height:auto">
+                <button class="btn btn-navy btn-sm" onclick="alert('Team invitations require Professional or Enterprise plan. Contact sales@opgvision.ai.')">Send invite</button>
+              </div>
+              <p style="font-size:12px;color:var(--ink-3);margin-top:10px">Multi-user access is available on Professional (≤ 20 seats) and Enterprise plans.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ SECTION: SETTINGS ══════════════════════════════ -->
+      <div id="section-settings" class="dash-section hidden">
+        <div style="display:grid;gap:20px;max-width:680px">
+
+          <!-- Profile -->
+          <div class="table-card">
+            <div class="table-card-header"><div class="table-card-title">Profile</div></div>
+            <div style="padding:20px 24px;display:grid;gap:16px">
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);letter-spacing:0.1em;color:var(--ink-3);margin-bottom:6px">FULL NAME</div>
+                <div style="font-size:15px;font-weight:600;color:var(--ink)" data-user-name>—</div>
+              </div>
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);letter-spacing:0.1em;color:var(--ink-3);margin-bottom:6px">EMAIL ADDRESS</div>
+                <div style="font-size:14px;color:var(--ink)" data-user-email>—</div>
+              </div>
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);letter-spacing:0.1em;color:var(--ink-3);margin-bottom:6px">ACTIVE PLAN</div>
+                <div style="font-size:14px;color:var(--ink);display:flex;align-items:center;gap:10px">
+                  <span id="settings-plan-badge" style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.1em;color:var(--blue);background:rgba(24,0,173,0.08);border:1px solid rgba(24,0,173,0.18);border-radius:6px;padding:3px 8px">—</span>
+                  <a href="pricing.html" style="font-size:12.5px;color:var(--blue)">Manage plan →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Security -->
+          <div class="table-card">
+            <div class="table-card-header"><div class="table-card-title">Security</div></div>
+            <div style="padding:20px 24px">
+              <p style="font-size:13.5px;color:var(--ink-2);margin-bottom:16px">Update your password. You will need to log in again after changing it.</p>
+              <div style="display:grid;gap:12px">
+                <div>
+                  <label class="form-label" style="font-size:12px">New password</label>
+                  <input type="password" id="settings-password" class="form-input" placeholder="Min. 8 characters" style="height:auto;padding:9px 12px">
+                  <span class="form-error" id="settings-pwd-err"></span>
+                </div>
+                <div>
+                  <label class="form-label" style="font-size:12px">Confirm new password</label>
+                  <input type="password" id="settings-confirm" class="form-input" placeholder="Re-enter new password" style="height:auto;padding:9px 12px">
+                </div>
+              </div>
+              <button id="btn-change-pwd" class="btn btn-navy btn-sm" style="margin-top:16px">Update password</button>
+              <div id="settings-pwd-ok" class="hidden" style="margin-top:10px;font-size:13px;color:#16a34a;font-family:var(--font-mono)">✓ Password updated. Please log in again.</div>
+            </div>
+          </div>
+
+          <!-- Danger zone -->
+          <div class="table-card" style="border-color:rgba(239,68,68,0.25)">
+            <div class="table-card-header"><div class="table-card-title" style="color:#ef4444">Danger zone</div></div>
+            <div style="padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+              <div>
+                <div style="font-size:14px;font-weight:600;color:var(--ink)">Log out of all sessions</div>
+                <div style="font-size:12.5px;color:var(--ink-3);margin-top:3px">Clears your local session and returns you to the login page.</div>
+              </div>
+              <button class="btn btn-sm" style="background:rgba(239,68,68,0.1);color:#ef4444;border:1px solid rgba(239,68,68,0.3)" onclick="logout()">Log out</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="auth.js"></script>
+  <script>
+    if (!requireAuth()) throw new Error('redirect');
+    if (!requirePlan()) throw new Error('redirect');
+    populateUserUI();
+
+    document.getElementById('btn-logout').addEventListener('click', logout);
+
+    // ── Shared data store ──────────────────────────────────
+    let allCases = [];
+    let meData   = {};
+    let currentSection = 'dashboard';
+
+    // Set dashboard title to user name immediately from stored session
+    const _sessionUser = getUser();
+    const _userName = _sessionUser?.name || 'Dashboard';
+    document.getElementById('page-title').textContent = _userName;
+
+    // ── Section routing ───────────────────────────────────
+    const SECTION_META = {
+      dashboard: { title: () => getUser()?.name || 'Dashboard', subtitle: () => `<span class="live-dot"></span>Last sync just now · <span style="color:var(--cyan)">All systems operational</span>` },
+      cases:     { title: () => 'Cases',     subtitle: () => `${allCases.length} total records` },
+      audit:     { title: () => 'Audit log', subtitle: () => `Chronological event log · ${allCases.length} entries` },
+      team:      { title: () => 'Team',      subtitle: () => 'Manage team members and permissions' },
+      settings:  { title: () => 'Settings',  subtitle: () => 'Account, security, and preferences' },
+    };
+
+    function switchSection(name) {
+      currentSection = name;
+      document.querySelectorAll('.dash-section').forEach(s => s.classList.add('hidden'));
+      document.getElementById('section-' + name).classList.remove('hidden');
+
+      document.querySelectorAll('[data-section]').forEach(a => a.classList.remove('active'));
+      const link = document.querySelector(`[data-section="${name}"]`);
+      if (link) link.classList.add('active');
+
+      const meta = SECTION_META[name];
+      const titleEl = document.getElementById('page-title');
+      titleEl.textContent = meta.title();
+
+      // Only dashboard title is clickable (goes to profile/settings)
+      if (name === 'dashboard') {
+        titleEl.style.cursor = 'pointer';
+        titleEl.title = 'View your profile';
+      } else {
+        titleEl.style.cursor = '';
+        titleEl.title = '';
+      }
+
+      document.getElementById('page-subtitle').innerHTML = meta.subtitle();
+    }
+
+    // Click on user name title → go to settings
+    document.getElementById('page-title').addEventListener('click', () => {
+      if (currentSection === 'dashboard') switchSection('settings');
+    });
+
+    document.querySelectorAll('[data-section]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        switchSection(link.dataset.section);
+      });
+    });
+
+    // Handle direct link to a section via URL hash (e.g. dashboard.html#settings)
+    const _hashSection = window.location.hash.replace('#', '');
+    if (_hashSection && SECTION_META[_hashSection]) {
+      switchSection(_hashSection);
+      history.replaceState(null, '', window.location.pathname);
+    }
+
+    // ── Helpers ───────────────────────────────────────────
+    function esc(str) { const d = document.createElement('div'); d.textContent = str || '—'; return d.innerHTML; }
+    function formatDate(iso) {
+      try { return new Date(iso).toLocaleDateString('en-MY', { day:'2-digit', month:'short', year:'2-digit' }).toUpperCase(); }
+      catch { return '—'; }
+    }
+    function formatDateTime(iso) {
+      try {
+        const d = new Date(iso);
+        return d.toLocaleDateString('en-MY', { day:'2-digit', month:'short', year:'2-digit' }).toUpperCase()
+          + ' · ' + d.toLocaleTimeString('en-MY', { hour:'2-digit', minute:'2-digit', hour12:false });
+      } catch { return '—'; }
+    }
+    function animateNumber(id, target) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const dur = 700, t0 = performance.now();
+      (function step(now) {
+        const p = Math.min((now - t0) / dur, 1);
+        el.textContent = Math.round((1 - Math.pow(1 - p, 3)) * target);
+        if (p < 1) requestAnimationFrame(step);
+      })(performance.now());
+    }
+
+    function caseRowHtml(c, extraCols = false) {
+      const ageRange = ((c.age_high - c.age_low) / 2).toFixed(1);
+      const refCol = extraCols ? `<td class="td-mono">${esc(c.reference_no)}</td>` : '';
+      return `<tr>
+        <td class="td-primary">${esc(c.report_id)}</td>
+        <td class="td-mono">${esc(c.case_id)}</td>
+        ${refCol}
+        <td class="td-mono">${formatDate(c.created_at)}</td>
+        <td><span class="age-bar-num">${c.estimated_age?.toFixed(1) ?? '—'}<small> ±${ageRange}</small></span></td>
+        <td><span class="badge badge-${(c.classification||'').toLowerCase()}">${esc(c.classification)}</span></td>
+        <td>${esc(c.officer_name)}</td>
+        <td><a href="analyse.html?view=${encodeURIComponent(c.report_id)}" class="btn btn-outline btn-sm" style="font-size:0.75rem;padding:0.25rem 0.625rem">View →</a></td>
+      </tr>`;
+    }
+
+    // ── Render cases section ──────────────────────────────
+    function renderCasesSection(filter = '') {
+      const q = filter.toLowerCase();
+      const filtered = q
+        ? allCases.filter(c =>
+            (c.report_id||'').toLowerCase().includes(q) ||
+            (c.case_id||'').toLowerCase().includes(q) ||
+            (c.officer_name||'').toLowerCase().includes(q) ||
+            (c.reference_no||'').toLowerCase().includes(q)
+          )
+        : allCases;
+
+      document.getElementById('cases-count-full').textContent = filtered.length + ' RECORDS';
+      const tbody = document.getElementById('cases-tbody-full');
+
+      if (filtered.length === 0) {
+        document.getElementById('cases-table-full').classList.add('hidden');
+        document.getElementById('cases-empty-full').classList.remove('hidden');
+      } else {
+        document.getElementById('cases-empty-full').classList.add('hidden');
+        tbody.innerHTML = filtered.map(c => caseRowHtml(c, true)).join('');
+        document.getElementById('cases-table-full').classList.remove('hidden');
+      }
+    }
+
+    // ── Render audit log ──────────────────────────────────
+    function renderAudit() {
+      document.getElementById('audit-loading').style.display = 'none';
+
+      if (allCases.length === 0) {
+        document.getElementById('audit-empty').classList.remove('hidden');
+        return;
+      }
+
+      document.getElementById('audit-count').textContent = allCases.length + ' EVENTS';
+      const timeline = document.getElementById('audit-timeline');
+      timeline.innerHTML = allCases.map(c => {
+        const isBorderline = c.is_borderline;
+        const dotColor = isBorderline ? '#d97706' : (c.classification === 'MINOR' ? '#16a34a' : '#1800ad');
+        return `
+          <div style="display:flex;gap:16px;padding:14px 24px;border-bottom:1px solid var(--border)">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding-top:3px">
+              <div style="width:9px;height:9px;border-radius:50%;background:${dotColor};flex-shrink:0"></div>
+              <div style="width:1px;flex:1;background:var(--border)"></div>
+            </div>
+            <div style="flex:1;min-width:0;padding-bottom:4px">
+              <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                <span style="font-weight:600;font-size:13.5px;color:var(--ink)">${esc(c.report_id)}</span>
+                <span class="badge badge-${(c.classification||'').toLowerCase()}">${esc(c.classification)}</span>
+                ${isBorderline ? '<span style="font-family:var(--font-mono);font-size:10px;color:#d97706;background:rgba(217,119,6,0.1);border:1px solid rgba(217,119,6,0.25);border-radius:5px;padding:2px 7px;letter-spacing:0.08em">BORDERLINE</span>' : ''}
+              </div>
+              <div style="margin-top:5px;font-size:12.5px;color:var(--ink-3)">
+                Case <strong style="color:var(--ink-2)">${esc(c.case_id)}</strong> · Est. age <strong style="color:var(--ink-2)">${c.estimated_age?.toFixed(1) ?? '—'} yrs</strong> · Officer <strong style="color:var(--ink-2)">${esc(c.officer_name)}</strong>
+              </div>
+              <div style="margin-top:4px;font-family:var(--font-mono);font-size:11px;color:var(--ink-3);letter-spacing:0.05em">${formatDateTime(c.created_at)}</div>
+            </div>
+            <a href="analyse.html?view=${encodeURIComponent(c.report_id)}" class="btn btn-outline btn-sm" style="font-size:0.75rem;padding:0.25rem 0.625rem;align-self:flex-start;flex-shrink:0">View →</a>
+          </div>`;
+      }).join('');
+      timeline.classList.remove('hidden');
+    }
+
+    // ── Sparklines ────────────────────────────────────────
+    function groupByWeek(cases, weeks = 12, filterFn = () => true) {
+      const counts = new Array(weeks).fill(0);
+      const weekMs = 7 * 24 * 60 * 60 * 1000;
+      const now = Date.now();
+      cases.forEach(c => {
+        if (!filterFn(c)) return;
+        const age = now - new Date(c.created_at).getTime();
+        const idx = Math.floor(age / weekMs);
+        if (idx < weeks) counts[weeks - 1 - idx]++;
+      });
+      return counts;
+    }
+
+    function groupByDayThisMonth(cases, filterFn = () => true) {
+      const now = new Date();
+      const days = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+      const counts = new Array(days).fill(0);
+      cases.forEach(c => {
+        if (!filterFn(c)) return;
+        const d = new Date(c.created_at);
+        if (d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear()) {
+          counts[d.getDate() - 1]++;
+        }
+      });
+      return counts;
+    }
+
+    function drawSparkline(lineId, dotId, values) {
+      const line = document.getElementById(lineId);
+      const dot  = document.getElementById(dotId);
+      if (!line || !dot || values.length < 2) return;
+
+      const max = Math.max(...values, 1);
+      const n   = values.length;
+      const pts = values.map((v, i) => {
+        const x = (i / (n - 1)) * 88;
+        const y = 2 + (1 - v / max) * 28;
+        return `${x.toFixed(1)},${y.toFixed(1)}`;
+      }).join(' ');
+
+      line.setAttribute('points', pts);
+      const lastY = 2 + (1 - values[n - 1] / max) * 28;
+      dot.setAttribute('cx', '88');
+      dot.setAttribute('cy', lastY.toFixed(1));
+    }
+
+    function trendLabel(weeklyData) {
+      const half   = Math.floor(weeklyData.length / 2);
+      const recent = weeklyData.slice(half).reduce((a, b) => a + b, 0);
+      const prior  = weeklyData.slice(0, half).reduce((a, b) => a + b, 0);
+      if (prior === 0 && recent === 0) return null;
+      if (prior === 0) return { pct: null, up: true };
+      const pct = ((recent - prior) / prior * 100).toFixed(1);
+      return { pct, up: parseFloat(pct) >= 0 };
+    }
+
+    function renderSparklines(cases) {
+      // Total analyses — weekly 12 wks
+      const totalWeekly = groupByWeek(cases, 12);
+      drawSparkline('spark-total-line', 'spark-total-dot', totalWeekly);
+      const trend = trendLabel(totalWeekly);
+      const trendEl = document.getElementById('stat-total-trend');
+      if (trend && trend.pct !== null) {
+        trendEl.textContent = (trend.up ? '↑ ' : '↓ ') + Math.abs(trend.pct) + '%';
+        trendEl.className = trend.up ? 'pos' : 'neg';
+      } else {
+        trendEl.textContent = '— ';
+        trendEl.className = '';
+      }
+
+      // This month — daily
+      const monthDaily = groupByDayThisMonth(cases);
+      drawSparkline('spark-month-line', 'spark-month-dot', monthDaily);
+
+      // Borderline — weekly 12 wks
+      const borderlineWeekly = groupByWeek(cases, 12, c => c.is_borderline);
+      drawSparkline('spark-borderline-line', 'spark-borderline-dot', borderlineWeekly);
+    }
+
+    // ── Export CSV ────────────────────────────────────────
+    document.getElementById('btn-export-csv').addEventListener('click', () => {
+      if (allCases.length === 0) return;
+      const headers = ['Report ID','Case ID','Reference','Date','Officer','Estimated Age','Classification','Borderline'];
+      const rows = allCases.map(c => [
+        c.report_id, c.case_id, c.reference_no||'',
+        formatDate(c.created_at), c.officer_name,
+        c.estimated_age?.toFixed(1)??'', c.classification,
+        c.is_borderline ? 'Yes' : 'No',
+      ].map(v => `"${String(v).replace(/"/g,'""')}"`).join(','));
+      const csv = [headers.join(','), ...rows].join('\n');
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+      a.download = `OPGVision_cases_${new Date().toISOString().slice(0,10)}.csv`;
+      a.click();
+    });
+
+    // ── Settings: change password ─────────────────────────
+    document.getElementById('btn-change-pwd').addEventListener('click', async () => {
+      const pwd  = document.getElementById('settings-password').value;
+      const conf = document.getElementById('settings-confirm').value;
+      const errEl = document.getElementById('settings-pwd-err');
+      errEl.textContent = '';
+
+      if (pwd.length < 8) { errEl.textContent = 'Password must be at least 8 characters.'; return; }
+      if (pwd !== conf)   { errEl.textContent = 'Passwords do not match.'; return; }
+
+      const btn = document.getElementById('btn-change-pwd');
+      btn.disabled = true; btn.textContent = 'Updating…';
+
+      try {
+        const body = new FormData();
+        body.append('password', pwd);
+        const res  = await apiFetch('/auth/update-password', { method: 'POST', body });
+        if (!res) return;
+        if (!res.ok) {
+          const d = await res.json();
+          errEl.textContent = d.detail || 'Failed to update password.';
+          return;
+        }
+        document.getElementById('settings-pwd-ok').classList.remove('hidden');
+        setTimeout(() => logout(), 2000);
+      } catch {
+        errEl.textContent = 'Network error. Please try again.';
+      } finally {
+        btn.disabled = false; btn.textContent = 'Update password';
+      }
+    });
+
+    // ── Load all data ─────────────────────────────────────
+    async function loadDashboard() {
+      try {
+        const [meRes, casesRes] = await Promise.all([
+          apiFetch('/auth/me'),
+          apiFetch('/api/cases'),
+        ]);
+        if (!meRes || !casesRes) return;
+
+        meData   = await meRes.json();
+        allCases = await casesRes.json();
+
+        // Update sidebar cases badge
+        document.getElementById('cases-badge').textContent = allCases.length;
+
+        // Settings plan badge
+        const planBadge = document.getElementById('settings-plan-badge');
+        if (meData.plan) {
+          planBadge.textContent = meData.plan.toUpperCase();
+        }
+
+        // Stats
+        animateNumber('stat-total',      meData.total_cases ?? 0);
+        animateNumber('stat-month',      meData.analyses_this_month ?? 0);
+        animateNumber('stat-borderline', allCases.filter(c => c.is_borderline).length);
+        renderSparklines(allCases);
+
+        // Dashboard recent cases (latest 5)
+        const recent = allCases.slice(0, 5);
+        document.getElementById('dash-cases-loading').style.display = 'none';
+
+        if (recent.length === 0) {
+          document.getElementById('dash-cases-empty').classList.remove('hidden');
+        } else {
+          document.getElementById('dash-cases-tbody').innerHTML = recent.map(c => caseRowHtml(c, false)).join('');
+          document.getElementById('dash-cases-table').classList.remove('hidden');
+        }
+
+        // Pre-render other sections
+        document.getElementById('cases-loading-full').style.display = 'none';
+        renderCasesSection();
+
+        renderAudit();
+
+      } catch (err) {
+        console.error(err);
+        document.getElementById('dash-cases-loading').textContent = 'Failed to load data. Please refresh.';
+      }
+    }
+
+    // Cases search
+    document.getElementById('cases-search').addEventListener('input', e => {
+      renderCasesSection(e.target.value);
+    });
+
+    loadDashboard();
+  </script>
+
+</body>
+</html>
